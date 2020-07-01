@@ -1,0 +1,24 @@
+# Default
+.gulp
+.idea
+.vscode
+
+# Node
+node_modules
+
+# Dist & tests
+test
+dist
+
+# Logs:
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Special
+Thumbs.db
+Desktop.ini
+.DS_Store*
+ehthumbs.db
+Icon?
