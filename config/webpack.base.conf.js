@@ -6,11 +6,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const PATHS = {
   src: path.join(__dirname, '../src'),
   dist: path.join(__dirname, '../dist'),
-  assets: 'assets/'
+  assets: 'app/'
 }
 
+  // Base Webpack config
 module.exports = {
-  // BASE config
   externals: {
     paths: PATHS
   },
@@ -19,8 +19,7 @@ module.exports = {
   },
   output: {
     filename: `${PATHS.assets}js/[name].js`,
-    path: PATHS.dist,
-    publicPath: '/'
+    path: PATHS.dist
   },
   module: {
     rules: [{
