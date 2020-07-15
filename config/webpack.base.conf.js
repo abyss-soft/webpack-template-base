@@ -9,8 +9,8 @@ const PATHS = {
   assets: 'assets/'
 }
 
+  // Base Webpack config
 module.exports = {
-  // BASE config
   externals: {
     paths: PATHS
   },

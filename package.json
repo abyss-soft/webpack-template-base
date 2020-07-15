@@ -4,8 +4,8 @@
   "description": "webpack-template",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --open --config ./build/webpack.dev.conf.js",
-    "build": "webpack --config ./build/webpack.build.conf.js"
+    "dev": "webpack-dev-server --open --config ./config/webpack.dev.conf.js",
+    "prod": "webpack --config ./config/webpack.build.conf.js"
   },
   "browserslist": [
     "> 1%",
