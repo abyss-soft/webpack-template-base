@@ -15,11 +15,24 @@ module.exports = {
     paths: PATHS
   },
   entry: {
-    app: PATHS.src
+    app: PATHS.src,
+    lk: `${PATHS.src}/lk.js`
   },
   output: {
-    filename: `${PATHS.assets}js/[name].js`,
+    filename: `${PATHS.assets}js/[name].[hash].js`,
     path: PATHS.dist
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          name: "vendors",
+          test: /node_modules/,
+          chunks: "all",
+          enforce: true
+        }
+      }
+    }
   },
   module: {
     rules: [{
@@ -65,10 +78,11 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}css/[name].css`,
+      filename: `${PATHS.assets}css/[name].[hash].css`,
     }),
     new HtmlWebpackPlugin({
-      hash: false,
+      // hash: false,
+      inject: true,
       template: `${PATHS.src}/index.html`,
       filename: './index.html'
     }),

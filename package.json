@@ -1,11 +1,12 @@
 {
   "name": "webpack-template",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "description": "webpack-template",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --open --config ./config/webpack.dev.conf.js",
-    "prod": "webpack --config ./config/webpack.build.conf.js"
+    "prod": "npm run clean -s && webpack --config ./config/webpack.build.conf.js",
+    "clean": "shx rm -rf dist"
   },
   "browserslist": [
     "> 1%",
@@ -14,10 +15,7 @@
   "author": "Alexander Panov",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vedees/************.git"
-  },
-  "bugs": {
-    "url": "https://github.com/vedees/webpack-template/issues"
+    "url": "git+https://github.com/abyss-soft/webpack-template-base.git"
   },
   "license": "MIT",
   "devDependencies": {
@@ -34,6 +32,7 @@
     "node-sass": "^4.13.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.0",
+    "shx": "^0.3.2",
     "style-loader": "^1.1.2",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
