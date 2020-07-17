@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack-dev-server --open --config ./config/webpack.dev.conf.js",
     "prod": "npm run clean -s && webpack --config ./config/webpack.build.conf.js",
-    "clean": "shx rm -rf dist"
+    "clean": "shx rm -rf dist",
+    "lint": "eslint --debug src/"
   },
   "browserslist": [
     "> 1%",
@@ -22,10 +23,20 @@
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
     "autoprefixer": "^9.7.3",
+    "babel-eslint": "^8.2.3",
     "babel-loader": "^8.0.6",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.0",
     "cssnano": "^4.1.10",
+    "eslint": "^4.19.1",
+    "eslint-loader": "^4.0.2",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-jest-enzyme": "^6.0.2",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jest": "^21.18.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.9.1",
     "file-loader": "^5.0.2",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.9.0",
