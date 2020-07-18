@@ -2,114 +2,25 @@
 @import "utils/vars";
 @import "utils/mixins";
 @import "utils/fonts";
-@import "utils/reset";
-@import "utils/wrapper";
+// @import "utils/_reset";
+@import "utils/_normalize";
+@import "utils/_smart-grid";
 
-html {
-  line-height: $mainLineHeight;
-  font-size: $mainFontSize;
-  color: $mainFontColor;
-  height: 100%;
-  @media screen and (max-width: $desktopWidth) {
-    font-size: 16px;
-  }
-  @media screen and (max-width: $tableWidth) {
-    font-size: 15px;
-  }
-  @media screen and (max-width: $phoneWidth) {
-    font-size: 14px;
-  }
-}
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: $mainFont;
-  font-size: $mainFontSize;
-  font-weight: $mainFontWeight;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+.wrapper{
+    @include row-flex();
+    @include col();
+    @include size(1); /* Задаём размер элементу по-умолчанию - элементы будут занимать по 1 колонки */
+    @include size-xl(12); /* при 1200px - На планшете по ... колонок */
+    @include size-lg(6); /* при 992px - На планшете по ... колонок */
+    @include size-md(6); /* при 768px - На планшете по ... колонок*/
+    @include size-sm(6); /* при 576px - На телефоне по ... колонок*/
+    @include size-xs(6); /* при 320px - На телефоне с маленьким экраном по ... колонок */
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
-a {
-  text-decoration: none;
-}
-
-ul,
-li {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-section,
-.section {
-  position: relative;
-  padding: 40px 0;
-  @media screen and (max-width: $smDesktopWidth) {
-    padding: 36px 0;
-  }
-  @media screen and (max-width: $tableWidth) {
-    padding: 28px 0;
-  }
-  @media screen and (max-width: $phoneWidth) {
-    padding: 20px 0;
-  }
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  min-height: 100vh;
-  min-width: 100vh;
-}
-
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.container {
-  width: 100%;
-  flex: 0 0 auto;
-  position: relative;
-  margin: 0 auto;
-  max-width: $desktopWidth;
-  @media screen and (max-width: $smDesktopWidth) {
-    max-width: $tableWidth;
-  }
-  @media screen and (max-width: $tableWidth) {
-    max-width: $phoneWidth;
-  }
-  @media screen and (max-width: $phoneWidth) {
-    max-width: $smPhoneWidth;
-  }
-}
-
-// Modules:
-// example: @import "modules/my-module.scss";
-
-.body-h1 {
-  color: $danger-color;
-}
-
-.section-one {
- // background-image: url("/assets/img/dogfunny.jpg");
+    @include md-block() {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    flex-direction: column;
+    font-family: AvenirNextDemi, sans-serif;
 }
