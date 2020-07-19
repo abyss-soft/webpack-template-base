@@ -7,7 +7,6 @@
 node_modules
 
 # Dist & tests
-test
 dist
 
 # Logs:
@@ -18,7 +17,4 @@ yarn-error.log*
 
 # Special
 Thumbs.db
-Desktop.ini
 .DS_Store*
-ehthumbs.db
-Icon?
