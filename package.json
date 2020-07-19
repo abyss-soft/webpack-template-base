@@ -8,7 +8,8 @@
     "prod": "npm run clean -s && webpack --config ./config/webpack.build.conf.js",
     "clean": "shx rm -rf dist",
     "lint": "eslint --debug src/",
-    "smart-grid": "node smart-grid.js"
+    "smart-grid": "node smart-grid.js",
+    "test": "jest"
   },
   "browserslist": [
     "> 1%",
@@ -20,6 +21,26 @@
     "url": "git+https://github.com/abyss-soft/webpack-template-base.git"
   },
   "license": "MIT",
+  "jest": {
+    "verbose": true,
+    "bail": true,
+    "collectCoverage": true,
+    "coverageReporters": [
+      "html"
+    ],
+    "coverageDirectory": "coverage",
+    "moduleNameMapper": {
+      "\\.(jpe?g|png|gif|eot|otf|webp|svg|ttf|woff2?|mp[34]|webm|wav|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less|s[ac]ss|styl)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
@@ -30,9 +51,9 @@
     "css-loader": "^3.4.0",
     "cssnano": "^4.1.10",
     "eslint": "^4.19.1",
-    "eslint-loader": "^4.0.2",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-config-jest-enzyme": "^6.0.2",
+    "eslint-loader": "^4.0.2",
     "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jest": "^21.18.0",
@@ -40,6 +61,7 @@
     "eslint-plugin-react": "^7.9.1",
     "file-loader": "^5.0.2",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^26.1.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.0",
     "postcss-loader": "^3.0.0",
