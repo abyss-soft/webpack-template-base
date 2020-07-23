@@ -1,6 +1,6 @@
 import "./smart-gread-layer.scss";
 
-const columns = 24;   // number of grid columns
+const columns = 12;   // number of grid columns
 export default function () {
 
   let wiew_columns = "";
