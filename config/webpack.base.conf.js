@@ -1,15 +1,16 @@
-const path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const isProduction = process.env.NODE_ENV !== "production";
 
 const PATHS = {
-  src: path.join(__dirname, '../src'),
-  dist: path.join(__dirname, '../dist'),
-  assets: 'assets/'
-}
+  src: path.join(__dirname, "../src"),
+  dist: path.join(__dirname, "../dist"),
+  assets: "assets/"
+};
 
-  // Base Webpack config
+// Base Webpack config
 module.exports = {
   externals: {
     paths: PATHS
@@ -37,9 +38,9 @@ module.exports = {
   module: {
     rules: [{
       test: /\.js$/,
-      loader: 'babel-loader',
-      exclude: '/node_modules/'
-    }, 
+      loader: "babel-loader",
+      exclude: isProduction ? [/node_modules/, /\.smart-gread-layer$/] : /node_modules/,
+    },
     {
       // Fonts
       test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
@@ -50,37 +51,37 @@ module.exports = {
     },
     {
       test: /\.(png|jpg|gif|svg)$/,
-      loader: 'file-loader',
+      loader: "file-loader",
       options: {
-        name: '[name].[ext]'
+        name: "[name].[ext]"
       }
     }, {
       test: /\.scss$/,
       use: [
-        'style-loader',
+        "style-loader",
         MiniCssExtractPlugin.loader,
         {
-          loader: 'css-loader',
+          loader: "css-loader",
           options: { sourceMap: true }
         }, {
-          loader: 'postcss-loader',
-          options: { sourceMap: true, config: { path: `./postcss.config.js`} }
+          loader: "postcss-loader",
+          options: { sourceMap: true, config: { path: "./postcss.config.js"} }
         }, {
-          loader: 'sass-loader',
+          loader: "sass-loader",
           options: { sourceMap: true }
         }
       ]
     }, {
       test: /\.css$/,
       use: [
-        'style-loader',
+        "style-loader",
         MiniCssExtractPlugin.loader,
         {
-          loader: 'css-loader',
+          loader: "css-loader",
           options: { sourceMap: true }
         }, {
-          loader: 'postcss-loader',
-          options: { sourceMap: true, config: { path: `./postcss.config.js` } }
+          loader: "postcss-loader",
+          options: { sourceMap: true, config: { path: "./postcss.config.js" } }
         }
       ]
     }]
@@ -99,12 +100,12 @@ module.exports = {
       // hash: false,
       inject: true,
       template: `${PATHS.src}/index.html`,
-      filename: './index.html'
+      filename: "./index.html"
     }),
-	new CopyWebpackPlugin([
+    new CopyWebpackPlugin([
       { from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img` },
       { from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts` },
       { from: `${PATHS.src}/static`, to: "" }
     ])
   ],
-}
+};

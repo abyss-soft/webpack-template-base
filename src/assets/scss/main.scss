@@ -7,20 +7,32 @@
 @import "utils/_smart-grid";
 
 
-.wrapper{
-    @include row-flex();
-    @include col();
-    @include size(1); /* Задаём размер элементу по-умолчанию - элементы будут занимать по 1 колонки */
-    @include size-xl(12); /* при 1200px - На планшете по ... колонок */
-    @include size-lg(6); /* при 992px - На планшете по ... колонок */
-    @include size-md(6); /* при 768px - На планшете по ... колонок*/
-    @include size-sm(6); /* при 576px - На телефоне по ... колонок*/
-    @include size-xs(6); /* при 320px - На телефоне с маленьким экраном по ... колонок */
+.l-container {
+  @include container();
+}
 
-    @include md-block() {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-    flex-direction: column;
-    font-family: AvenirNextDemi, sans-serif;
+.l-row {
+  @include row-flex();
+}
+
+.img-example {
+  @include col();
+  @include size(12);
+  background-color: #004444;
+  width: 100%;
+  height: 1080px;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  @include col();
+  @include size(2);
+  @include size-xl(2); /* при 1200px - На планшете по ... колонок */
+  @include size-lg(2); /* при 992px - На планшете по ... колонок */
+  @include size-md(2); /* при 768px - На планшете по ... колонок*/
+  @include size-sm(2); /* при 576px - На телефоне по ... колонок*/
+  @include size-xs(2); /* при 320px - На телефоне с маленьким экраном по ... колонок */
+  background-color: yellow;
+  height: 6rem;
 }

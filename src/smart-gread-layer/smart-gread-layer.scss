@@ -1,0 +1,18 @@
+@import"../assets/scss/utils/_smart-grid.scss";
+
+.degub-grid {
+  @include debug(rgba(0, 0, 0, 0.5), 1px solid #ff0);
+  display: none;
+  z-index: 999999999;
+}
+
+#gridToggle {
+  position: fixed;
+  z-index: 9999999999;
+  top: 10vw;
+  right: 1rem;
+  padding: 0.5rem;
+  background-color: #ffff00;
+  color: #001830;
+  cursor: grab;
+}
