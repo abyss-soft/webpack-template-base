@@ -15,6 +15,19 @@
 11. **Описание ошибок выводится прямо в браузере**
 12. Включен плагин, позволяющий удалять блоки кода, например при выводе в продакшен
 
+----
+**если нужна сборка с шаблонизатором Pug, то она тут**
+[https://github.com/abyss-soft/webpack-template-base_Pug](https://github.com/abyss-soft/webpack-template-base_Pug) 
+
+
+
+**если нужна простая сборка с gulp 4.0, то она тут**
+[https://github.com/abyss-soft/gulp4-html](https://github.com/abyss-soft/gulp4-html) 
+
+**если нужна простая сборка с gulp 3.9, то она тут**
+[https://github.com/abyss-soft/gulp-html](https://github.com/abyss-soft/gulp-html) 
+
+----
 
 ## Установка
 
