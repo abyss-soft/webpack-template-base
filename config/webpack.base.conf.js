@@ -2,6 +2,7 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlPluginRemove = require("html-webpack-plugin-remove");
 const isProduction = process.env.NODE_ENV !== "production";
 
 const PATHS = {
@@ -102,6 +103,7 @@ module.exports = {
       template: `${PATHS.src}/index.html`,
       filename: "./index.html"
     }),
+	new HtmlPluginRemove(/<!--deletestart-->[\s\S]*<!--deleteend-->/gi),
     new CopyWebpackPlugin([
       { from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img` },
       { from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts` },
