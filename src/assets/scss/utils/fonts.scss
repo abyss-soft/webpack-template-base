@@ -1,0 +1,11 @@
+@import "mixins";
+
+@font-face {
+  font-family: AvenirNextCyr-Demi;
+  src: local(avenirnext-demibold),
+  url('/assets/fonts/AvenirNextCyr-Demi.woff2') format("woff2"),
+  url('/assets/fonts/AvenirNextCyr-Demi.woff') format("woff"),
+  url('/assets/fonts/AvenirNextCyr-Demi.ttf') format("truetype");
+  font-style: normal;
+  font-stretch: normal;
+}
