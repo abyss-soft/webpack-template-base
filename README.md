@@ -16,6 +16,10 @@
 12. Включен плагин, позволяющий удалять блоки кода, например при выводе в продакшен
 
 ----
+
+**если нужна сборка с Vue и Vuex то она тут**
+[https://github.com/abyss-soft/webpack-template-base_vue_vuex](https://github.com/abyss-soft/webpack-template-base_vue_vuex) 
+
 **если нужна сборка с шаблонизатором Pug, то она тут**
 [https://github.com/abyss-soft/webpack-template-base_Pug](https://github.com/abyss-soft/webpack-template-base_Pug) 
 
