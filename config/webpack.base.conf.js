@@ -8,21 +8,21 @@ const isProduction = process.env.NODE_ENV !== "production";
 const PATHS = {
   src: path.join(__dirname, "../src"),
   dist: path.join(__dirname, "../dist"),
-  assets: "assets/"
+  assets: "assets/",
 };
 
 // Base Webpack config
 module.exports = {
   externals: {
-    paths: PATHS
+    paths: PATHS,
   },
   entry: {
     app: PATHS.src,
-    lk: `${PATHS.src}/lk.js`
+    lk: `${PATHS.src}/lk.js`,
   },
   output: {
     filename: `${PATHS.assets}js/[name].[hash].js`,
-    path: PATHS.dist
+    path: PATHS.dist,
   },
   optimization: {
     splitChunks: {
@@ -31,67 +31,82 @@ module.exports = {
           name: "vendors",
           test: /node_modules/,
           chunks: "all",
-          enforce: true
-        }
-      }
-    }
+          enforce: true,
+        },
+      },
+    },
   },
   module: {
-    rules: [{
-      test: /\.js$/,
-      loader: "babel-loader",
-      exclude: isProduction ? [/node_modules/, /\.smart-gread-layer$/] : /node_modules/,
-    },
-    {
-      // Fonts
-      test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-      loader: "file-loader",
-      options: {
-        name: "[name].[ext]"
-      }
-    },
-    {
-      test: /\.(png|jpg|gif|svg)$/,
-      loader: "file-loader",
-      options: {
-        name: "[name].[ext]"
-      }
-    }, {
-      test: /\.scss$/,
-      use: [
-        "style-loader",
-        MiniCssExtractPlugin.loader,
-        {
-          loader: "css-loader",
-          options: { sourceMap: true }
-        }, {
-          loader: "postcss-loader",
-          options: { sourceMap: true, config: { path: "./postcss.config.js"} }
-        }, {
-          loader: "sass-loader",
-          options: { sourceMap: true }
-        }
-      ]
-    }, {
-      test: /\.css$/,
-      use: [
-        "style-loader",
-        MiniCssExtractPlugin.loader,
-        {
-          loader: "css-loader",
-          options: { sourceMap: true }
-        }, {
-          loader: "postcss-loader",
-          options: { sourceMap: true, config: { path: "./postcss.config.js" } }
-        }
-      ]
-    }]
+    rules: [
+      {
+        test: /\.js$/,
+        loader: "babel-loader",
+        exclude: isProduction
+          ? [/node_modules/, /\.smart-gread-layer$/]
+          : /node_modules/,
+      },
+      {
+        // Fonts
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]",
+        },
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]",
+        },
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          "style-loader",
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: { sourceMap: true },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              sourceMap: true,
+              config: { path: "./postcss.config.js" },
+            },
+          },
+          {
+            loader: "sass-loader",
+            options: { sourceMap: true },
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: { sourceMap: true },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              sourceMap: true,
+              config: { path: "./postcss.config.js" },
+            },
+          },
+        ],
+      },
+    ],
   },
   resolve: {
     alias: {
       "~": PATHS.src,
-      vue$: "vue/dist/vue.js"
-    }
+      vue$: "vue/dist/vue.js",
+    },
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -101,13 +116,27 @@ module.exports = {
       // hash: false,
       inject: true,
       template: `${PATHS.src}/index.html`,
-      filename: "./index.html"
+      filename: "./index.html",
+      bodyTags: `
+          <h1>Hello World</h1>
+    `,
+    bodyTags1: `
+          <h1>Hello World H1</h1>
+    `,
+    headTags: `
+    <!--deletestart-->
+    <link rel="stylesheet" type="text/css" href="assets/scss/main.scss"/>
+    <!--deleteend-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebPack-template Head</title>
+    `,
     }),
-	new HtmlPluginRemove(/<!--deletestart-->[\s\S]*<!--deleteend-->/gi),
+    new HtmlPluginRemove(/<!--deletestart-->[\s\S]*<!--deleteend-->/gi),
     new CopyWebpackPlugin([
       { from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img` },
       { from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts` },
-      { from: `${PATHS.src}/static`, to: "" }
-    ])
+      { from: `${PATHS.src}/static`, to: "" },
+    ]),
   ],
 };
